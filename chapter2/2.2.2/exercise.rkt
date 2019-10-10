@@ -16,12 +16,21 @@
 (define (print argv split)
     (cond ((null? argv) (newline))
         ((not (pair? argv)) (display argv))
-        (else (display (car argv)) (display split) (print (cdr argv) split)))
+        (else 
+            (cond ((= 1 (length argv)) (display (car argv)))
+                 (else 
+                    (display (car argv))
+                    (display split)
+                    (print (cdr argv) split)
+                 ))
+        )
+    )    
 )
+
 
 
 (print (list "display items[[1,2], 3, 4]: " (length (list (list 1 2) 3 4))) " ")
 
 (newline)
-(display (pair? (cdr (list 1 2))))
+(print (pair? (cdr (list 1 2))) "")
 (exit)
