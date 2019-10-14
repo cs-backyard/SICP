@@ -1,4 +1,3 @@
-
 ; define map
 (define (map produce items)
     (if (null? items)
@@ -36,6 +35,19 @@
         (cons begin-num (enumerate (+ begin-num 1) end-num)))
 )
 ;(display (enumerate 0 6))
+
+(define (count-leaves trees)
+    (reduce (lambda (x y) (+ x y)) 0
+        (map 
+            (lambda (tree) 
+                (cond ((null? tree) 0)
+                    ((not (pair? tree)) 1)
+                    (else (count-leaves tree))
+                )) trees)
+    )
+)
+;test count-leaves
+(display (count-leaves (list (list 1 2) (list 5 6))))
 
 
 (exit)

@@ -38,4 +38,23 @@
 ;(display (enumerate 0 6))
 
 
+(define (map-re produce items)
+    (reduce (lambda (x y) (cons (produce x) y)) (list ) items)
+)
+; test map-re
+(display (map-re (lambda (item) (* item item)) (list 6 -2 -3)))
+(newline)
+
+(define (append seq-1 seq-2)
+    (reduce cons seq-2 seq-1)
+)
+; test append
+(display (append (list 1 2) (list 3 4)))
+(newline)
+
+(define (length items)
+    (reduce (lambda (x y) (+ 1 y)) 0 items)
+)
+; test length
+(display (length (list (list 1 2) 3 4)))
 (exit)
